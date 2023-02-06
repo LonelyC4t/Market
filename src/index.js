@@ -1,12 +1,15 @@
-import React, { Children } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {
   createBrowserRouter,
+  Form,
   RouterProvider
 } from "react-router-dom";
 import { ProductPage } from './Components/Pages/ProductPage/ProductPage';
+import {FormsIn, FormsUp} from "../src/Components/Pages/Form/Form"
+
 
 
 const router = createBrowserRouter([
@@ -17,6 +20,16 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductPage />
+      }
+    ]
+  }, 
+  {
+    path: "signin",
+    element: <FormsIn />,
+    children: [
+      {
+        path: "signup",
+        element: <FormsUp></FormsUp>
       }
     ]
   }
