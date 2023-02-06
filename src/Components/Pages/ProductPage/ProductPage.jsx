@@ -6,9 +6,9 @@ function ProductPage(){
 
     
 
-    return (
+    return 
         
-    )
+    
 }
 
 export {ProductPage}
