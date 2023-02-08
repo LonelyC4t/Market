@@ -39,7 +39,9 @@ function FormsIn(){
 
             <div className={style.buttonContainer}>
                 <button className={style.buttonModal} type="submit">SignIn</button>
-                <button onClick={()=>navigate('signup')} className={style.buttonModalReg} type="submit">Registration</button>
+                <div>
+                <button type='button' onClick={()=>navigate('signup')} className={style.buttonModalReg}>Registration</button>
+                </div>
             </div>
             </Form>
             </Formik> 
@@ -47,51 +49,5 @@ function FormsIn(){
         </div>
         
     )
-}
-function FormsUp(){
-
-    const navigate = useNavigate();
-
-    async function handleSubmitReg(values){
-        const responce = await api.registration(values);
-        navigate("/signin")
-        console.log(values)
-    };
-
-   return(
-       <div className={style.formPlace}>
-           
-           <Formik
-           initialValues={{
-           email: '',
-           password: "",
-           }}
-           onSubmit={handleSubmitReg}
-           >
-           <Form>
-           <div >
-               <Field
-                   id="email"
-                   name="email"
-                   placeholder="Velzevul@hell.com"
-                   type="email"
-                   className={style.inputModal}
-               />
-           </div>
-           <div>
-               <Field className={style.inputModal} type="password" name="password" placeholder="Password" />
-           </div>
-
-           <div className={style.buttonContainer}>
-               <button className={style.buttonModalReg} type="submit">Registration</button>
-           </div>
-           </Form>
-           </Formik> 
-           <Outlet></Outlet>
-       </div>
-       
-   )
-}
-
+};
 export {FormsIn};
-export {FormsUp};

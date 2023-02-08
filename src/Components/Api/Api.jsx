@@ -1,17 +1,19 @@
 class Api {
-    constructor (groupId){
+    constructor (group){
         this.url = `https://api.react-learning.ru`;
-        this.groupId = groupId;
+        this.group = group;
     };
 
-    registration(values, groupId) {
+    registration(values) {
+        values.group = this.group;
         return fetch(`${this.url}/signup`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 "Content-type": "application/json",
             },
-            body: JSON.stringify(values, groupId)
+            body: JSON.stringify(values)
+        
         })
     };
 
@@ -40,7 +42,7 @@ class Api {
     };
 
     getUser(token){
-        return fetch(`${this.url}/v2/${this.groupId}/users/me`, {
+        return fetch(`${this.url}/v2/${this.group}/users/me`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -51,4 +53,5 @@ class Api {
     };
 };
 const api = new Api("9-gr");
+
 export {api};

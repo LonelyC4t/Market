@@ -8,7 +8,8 @@ import {
   RouterProvider
 } from "react-router-dom";
 import { ProductPage } from './Components/Pages/ProductPage/ProductPage';
-import {FormsIn, FormsUp} from "../src/Components/Pages/Form/Form"
+import {FormsIn } from "../src/Components/Pages/Form/Form"
+import {FormsUp} from "./Components/Pages/Form/FormReg"
 import { UserPage } from './Components/Pages/UserPage/UserPage';
 
 

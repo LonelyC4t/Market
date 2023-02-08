@@ -13,7 +13,7 @@ function ProductPage(){
             const responce = await api.getProducts(token);
             const data = await responce.json();
             setCatalog(data);
-           
+           console.log(data)
         }
         fetchData();
         
