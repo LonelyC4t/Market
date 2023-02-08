@@ -16,9 +16,8 @@ function Header () {
                     <input className={style.placeSearch}></input>
                 </div>
                 <div className={style.buttonContainer}>
-                    <div className={style.headerButton} >PP</div>
-                    <div className={style.headerButton} >LK</div>
-                    <div className={style.headerButton} >BT</div>
+                    <div onClick={()=>navigate("products")} className={style.headerButton} >PP</div>
+                    <div onClick={()=>navigate("me")} className={style.headerButton} >LK</div>
                     <button onClick={()=>navigate("signin")}>signin</button>
                 </div>
             </div>

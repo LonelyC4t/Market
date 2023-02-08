@@ -4,8 +4,15 @@ class Api {
         this.groupId = groupId;
     };
 
-    registration() {
-        return
+    registration(values, groupId) {
+        return fetch(`${this.url}/signup`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(values, groupId)
+        })
     };
 
     authorization (values){
@@ -21,7 +28,7 @@ class Api {
     };
 
     getProducts(token){
-        return fetch (`${this.url}/products`),{
+        return fetch (`${this.url}/products`,{
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -29,8 +36,19 @@ class Api {
                 "Authorization": "Bearer " + token,
             }
 
-        }
-    }
+        })
+    };
+
+    getUser(token){
+        return fetch(`${this.url}/v2/${this.groupId}/users/me`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json",
+                "Authorization": "Bearer " + token,
+            }
+        })
+    };
 };
 const api = new Api("9-gr");
 export {api};

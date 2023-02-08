@@ -2,8 +2,9 @@
   width: 100%;
   height: 110px;
   background-color: rgb(221, 241, 71);
-  margin-top: 0;
-  
+  position: fixed;
+  z-index: 5;
+ 
 }
 .item {
   display: flex;
@@ -41,12 +42,22 @@
 
 .headerButton{
   margin: 0px 10px 0px 10px;
+  cursor: default;
+  width: 20px;
+  height: 20px;
+  padding: 2pxprivat;
+}
+.headerButton:hover {
+  border: 1px solid black;
+  scale: 2;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px inset;
 }
 .footerContainer {
   background-color: rgb(221, 241, 71);
   width: 100%;
-  height: 200px;
-  position: absolute;
+  height: 180px;
+  position: fixed;
   bottom: 0;
 }
 .footerItem{
@@ -126,4 +137,50 @@
 }
 .buttonModalReg:hover{
   box-shadow: 1px 1px 2px 2px inset;
+}
+.productWrapper{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 100px;
+  bottom: 200px;
+}
+.productItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  border: 1px black solid;
+  width: 250px;
+  height: 200px;
+  padding: 30px;
+}
+.imageItem {
+  width: 200px;
+  height: 150px;
+}
+.nameItem{
+  margin-top: 20px;
+  background-color: rgb(221, 241, 71);
+  padding: 5px;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+.userContainrt{
+  position: relative;
+  top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userImage{
+  width: 500px;
+  height: 400px;
 }

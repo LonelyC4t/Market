@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { ProductPage } from './Components/Pages/ProductPage/ProductPage';
 import {FormsIn, FormsUp} from "../src/Components/Pages/Form/Form"
+import { UserPage } from './Components/Pages/UserPage/UserPage';
 
 
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductPage />
+      },
+      {
+        path: "me",
+        element: <UserPage></UserPage>
       }
     ]
   }, 
@@ -32,7 +37,7 @@ const router = createBrowserRouter([
         element: <FormsUp></FormsUp>
       }
     ]
-  }
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

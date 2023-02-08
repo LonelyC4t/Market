@@ -10,9 +10,8 @@ function FormsIn(){
         const responce = await api.authorization(values);
         const data = await responce.json();
         localStorage.setItem("token", data.token);
-        navigate("/products")
-        
-    }
+        navigate("/products");
+    };
 
     return(
         <div className={style.formPlace}>
@@ -51,9 +50,13 @@ function FormsIn(){
 }
 function FormsUp(){
 
-    function handleSubmit(values){
-       console.log(values)
-    }
+    const navigate = useNavigate();
+
+    async function handleSubmitReg(values){
+        const responce = await api.registration(values);
+        navigate("/signin")
+        console.log(values)
+    };
 
    return(
        <div className={style.formPlace}>
@@ -63,7 +66,7 @@ function FormsUp(){
            email: '',
            password: "",
            }}
-           onSubmit={handleSubmit}
+           onSubmit={handleSubmitReg}
            >
            <Form>
            <div >
