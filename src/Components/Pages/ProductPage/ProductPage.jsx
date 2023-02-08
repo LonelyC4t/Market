@@ -36,4 +36,4 @@ function ProductPage(){
     )
 }
 
-export {ProductPage}
+export {ProductPage};
