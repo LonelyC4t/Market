@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
 import style from "../../../style.module.css";
 import {api} from "../../Api/Api";
+import {useQuery} from '@tanstack/react-query';
 
 function ProductPage(){
 
-    const [catalog, setCatalog] = useState({products : []});
-
-    useEffect(()=>{
-
-        async function fetchData(){
-            const token = localStorage.getItem("token");
-            const responce = await api.getProducts(token);
-            const data = await responce.json();
-            setCatalog(data);
-           console.log(data)
-        }
-        fetchData();
-        
-    },[]);
     
+
+    const {data:catalog} = useQuery({
+        
+        queryKey:["productFetch"],
+
+        queryFn: async () => {
+            let token = localStorage.getItem("token");
+            let responce = await api.getProducts(token);
+
+            return await responce.json();
+        },
+        
+        initialData:{products : []}
+    });
     
     return (
         <div className={style.productWrapper}>

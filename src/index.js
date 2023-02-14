@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import {
   createBrowserRouter,
-  Form,
   RouterProvider
 } from "react-router-dom";
 import { ProductPage } from './Components/Pages/ProductPage/ProductPage';
 import {FormsIn } from "../src/Components/Pages/Form/Form"
 import {FormsUp} from "./Components/Pages/Form/FormReg"
 import { UserPage } from './Components/Pages/UserPage/UserPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -31,11 +31,14 @@ const router = createBrowserRouter([
   }, 
   {
     path: "signin",
-    element: <FormsIn />,
+    element: <QueryClientProvider client={queryClient}>
+       <FormsIn />
+      </QueryClientProvider>,
+
     children: [
       {
         path: "signup",
-        element: <FormsUp></FormsUp>
+        element: <FormsUp></FormsUp>    
       }
     ]
   },

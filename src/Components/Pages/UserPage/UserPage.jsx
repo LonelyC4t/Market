@@ -1,23 +1,24 @@
 import {api} from "../../Api/Api";
 import style from "../../../style.module.css";
-import { useEffect, useState } from "react";
+import {useQuery} from '@tanstack/react-query';
 
 function UserPage(){
 
-    const [aboutMe, setAboutMe] = useState({});
+    
+    let {data:aboutMe} = useQuery({
 
-    useEffect(() => {
-        async function getInfo() {
-            const token = localStorage.getItem("token");
-            const responce = await api.getUser(token);
-            const data = await responce.json();
-            setAboutMe(data);
-            console.log(data)
-           
-        }
-        getInfo()
-       
-    },[])
+        queryKey:["userFetch"],
+
+        queryFn: async () => {
+
+            let token = localStorage.getItem("token");
+            let responce = await api.getUser(token);
+
+            return await responce.json();
+        },
+
+        initialData:{}
+    });
 
     return (
         <div className={style.userContainrt}>
