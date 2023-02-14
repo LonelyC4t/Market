@@ -1,15 +1,25 @@
 import { Formik, Form, Field } from 'formik';
 import { Outlet, useNavigate } from 'react-router-dom';
 import style from "../../../style.module.css";
-import {api} from "../../Api/Api"
+import {api} from "../../Api/Api";
+import {useMutation} from '@tanstack/react-query';
 
 function FormsIn(){
+    
     const navigate = useNavigate();
 
+    let {mutateAsync} = useMutation({
+        mutationFn: async (values) => {
+            const responce = await api.authorization(values);
+            let data = await responce.json()
+            localStorage.setItem("token", data.token);
+
+            return data;
+        }
+    })
+
     async function handleSubmit(values){
-        const responce = await api.authorization(values);
-        const data = await responce.json();
-        localStorage.setItem("token", data.token);
+        await mutateAsync(values);
         navigate("/products");
     };
 
