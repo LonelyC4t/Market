@@ -3,29 +3,32 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import style from "../../../style.module.css";
 import {api} from "../../Api/Api";
 import {useMutation} from '@tanstack/react-query';
+import {useToken} from "../../../Hooks/useToken"
 
 function FormsIn(){
-    
+    const {saveToken} = useToken();
     const navigate = useNavigate();
 
-    let {mutateAsync} = useMutation({
+    const {mutateAsync, isError, error} = useMutation({
         mutationFn: async (values) => {
             const responce = await api.authorization(values);
-            let data = await responce.json()
-            localStorage.setItem("token", data.token);
+            let data = await responce.json();
+            saveToken(data.token)
+            if (!responce.ok) throw new Error (data.message);
+            if(responce.ok) navigate("/products");
 
             return data;
         }
-    })
-
+    });
+    
     async function handleSubmit(values){
         await mutateAsync(values);
-        navigate("/products");
     };
 
     return(
         <div className={style.formPlace}>
-            
+            <p>Авторизация</p>
+            { error ? <p className={style.errMsg}> {error.message} </p> : null }
             <Formik
             initialValues={{
                 email: '',
@@ -50,12 +53,12 @@ function FormsIn(){
             <div className={style.buttonContainer}>
                 <button className={style.buttonModal} type="submit">SignIn</button>
                 <div>
-                <button type='button' onClick={()=>navigate('signup')} className={style.buttonModalReg}>Registration</button>
+                <button type='button' onClick={()=>navigate('/signup')} className={style.buttonModalReg}>Registration</button>
                 </div>
             </div>
             </Form>
             </Formik> 
-            <Outlet></Outlet>
+           
         </div>
         
     )

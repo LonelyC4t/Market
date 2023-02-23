@@ -1,36 +1,36 @@
 import style from "../../../style.module.css";
 import {api} from "../../Api/Api";
 import {useQuery} from '@tanstack/react-query';
+import { useToken } from "../../../Hooks/useToken";
+import { ProductCard } from "../productCard/productCard";
+
 
 function ProductPage(){
 
-    
+    const {token} = useToken();
 
-    const {data:catalog} = useQuery({
+    const {data:catalog, isError, error} = useQuery({
         
         queryKey:["productFetch"],
 
         queryFn: async () => {
-            let token = localStorage.getItem("token");
             let responce = await api.getProducts(token);
-
-            return await responce.json();
-        },
+            let data = await responce.json();
+            if(!responce.ok) throw new Error(data.message);
         
-        initialData:{products : []}
+            return data
+        },
+        initialData:{ products : [], total : 0 }
     });
     
     return (
         <div className={style.productWrapper}>
-            {catalog.products.map((item, index)=>{
+            {error ? <p className={style.errMsg}>Что-то пошло не так {error.message} обновите страницу или попробуйте позже</p>  : null }
+            {catalog && catalog.products.map((item, index)=>{
                 return <div key = {index}>
-                    <div className={style.productItem}>
-                        <img alt = "Вообще тут должна быть картинка" className={style.imageItem} src={item.pictures}></img>
-                        <span className={style.nameItem}>{item.name}</span>
-                    </div>
+                    <ProductCard item = {item} />
                 </div>
-            })
-            
+            }) 
         }
         </div>
     )

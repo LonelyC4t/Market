@@ -9,21 +9,27 @@ function FormsUp(){
 
     const navigate = useNavigate();
 
-    let {mutateAsync} = useMutation({
+    let {mutateAsync, isError, error} = useMutation({
 
         mutationFn: async (values) => {
-           return await api.registration(values);
+            const responce = await api.registration(values);
+            const data = await responce.json();
+            if(!responce.ok) throw new Error (data.message);
+            if(responce.ok) navigate("/signin");
+            
+            return data;
         }
     });
-
+    
     async function handleSubmitReg(values){
-        await mutateAsync(values)
+        await mutateAsync(values);
         navigate("/signin");
     };
 
    return(
        <div className={style.formPlace}>
-           
+           <p>Регистрация</p>
+            { error ? <p className={style.errMsg}> {error.message} </p> : null }
            <Formik
            initialValues={{
            email: '',

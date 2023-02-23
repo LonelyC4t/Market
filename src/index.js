@@ -11,6 +11,7 @@ import {FormsIn } from "../src/Components/Pages/Form/Form"
 import {FormsUp} from "./Components/Pages/Form/FormReg"
 import { UserPage } from './Components/Pages/UserPage/UserPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PrivateRouter } from './Components/privateRouter/privatRouter';
 
 const queryClient = new QueryClient();
 
@@ -21,33 +22,30 @@ const router = createBrowserRouter([
     children: [
       {
         path: "products",
-        element: <ProductPage />
+        element: <PrivateRouter> <ProductPage /> </PrivateRouter>
       },
       {
         path: "me",
-        element: <UserPage></UserPage>
+        element: <PrivateRouter> <UserPage /> </PrivateRouter>
+      },
+      {
+        path: "signin",
+        element: <FormsIn />,
+      },
+      {
+        path: "signup",
+        element: <FormsUp />
       }
     ]
   }, 
-  {
-    path: "signin",
-    element: <QueryClientProvider client={queryClient}>
-       <FormsIn />
-      </QueryClientProvider>,
-
-    children: [
-      {
-        path: "signup",
-        element: <FormsUp></FormsUp>    
-      }
-    ]
-  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} /> 
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} /> 
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

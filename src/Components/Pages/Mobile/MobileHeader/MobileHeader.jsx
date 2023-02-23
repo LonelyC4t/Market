@@ -1,21 +1,33 @@
-
-import {useNavigate} from "react-router-dom";
-import header from "./Header.module.css";
+import {useNavigate, NavLink} from "react-router-dom";
+import style from "./header.module.css";
 
 
 function MobileHeader () {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    function signOut() {
+        localStorage.removeItem("authToken");
+        navigate("signin");
+        return;
+    };
+
     return (
-        <div className={header.upContainer}>
-            <div className={header.item}>
+        <div className={style.upContainer}>
+            <div className={style.item}>
                 
                 <div className="stringSearch">
-                    <input className={header.placeSearch}></input>
+                    <input className={style.placeSearch}></input>
                 </div>
-                <div className={header.buttonContainer}>
-                    <div onClick={()=>navigate("products")} className={header.headerButton} >PP</div>
-                    <div onClick={()=>navigate("me")} className={header.headerButton} >LK</div>
-                    <button onClick={()=>navigate("signin")}>signin</button>
+                <div className={style.buttonContainer}>
+                <nav className={style.buttonContainer}>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
+                        
+                        <div>
+                            <button onClick={()=>navigate("signin")}>signIn</button>
+                            <button onClick={()=>signOut()}>signOut</button>
+                        </div>
+
+                    </nav>
                 </div>
             </div>
         </div>

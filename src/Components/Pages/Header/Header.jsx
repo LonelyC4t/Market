@@ -1,10 +1,16 @@
 import style from "../../../style.module.css";
 import logoImg from "../../../Image/logo.png";
-import {useNavigate} from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 
 
 function Header () {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    function signOut() {
+        localStorage.removeItem("authToken");
+        navigate("signin");
+        return;
+    };
+
     return (
         <div className={style.upContainer}>
             <div className={style.item}>
@@ -16,9 +22,15 @@ function Header () {
                     <input className={style.placeSearch}></input>
                 </div>
                 <div className={style.buttonContainer}>
-                    <div onClick={()=>navigate("products")} className={style.headerButton} >PP</div>
-                    <div onClick={()=>navigate("me")} className={style.headerButton} >LK</div>
-                    <button onClick={()=>navigate("signin")}>signin</button>
+                    
+                    <nav className={style.buttonContainer}>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
+                        <div>
+                            <button onClick={()=>navigate("signin")}>signIn</button>
+                            <button onClick={()=>signOut()}>signOut</button>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
