@@ -1,15 +1,16 @@
 import {api} from "../../Api/Api";
-import style from "../../../style.module.css";
+import style from "./style.module.css";
 import {useQuery} from '@tanstack/react-query';
+import { useSelector } from "react-redux";
 
 function UserPage(){
-    
+    const {authToken} = useSelector(state => state.user);
     const {data:aboutMe, isError, error} = useQuery({
 
         queryKey:["userFetch"],
 
         queryFn: async () => {
-            let token = localStorage.getItem("authToken");
+            let token = authToken;
             let responce = await api.getUser(token);
             let data = await responce.json();
             if (!responce.ok) throw new Error(data.message)
@@ -19,6 +20,8 @@ function UserPage(){
 
         initialData:{}
     });
+
+    if(isError) return <p className={style.errMsg}>Что-то пошло не так</p>
     
     return (
         <div className={style.userContainrt}>

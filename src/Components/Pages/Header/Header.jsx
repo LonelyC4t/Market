@@ -1,15 +1,55 @@
-import style from "../../../style.module.css";
+import style from "./style.module.css";
 import logoImg from "../../../Image/logo.png";
-import { NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeSearch } from "../../../redux/slice/filterSlice";
+import { useDebounce } from "../../../Hooks/useDebounce";
+import { removeUser } from "../../../redux/slice/userSlice";
 
 
 function Header () {
     const navigate = useNavigate();
+    const {authToken} = useSelector(state => state.user);
+    
+
     function signOut() {
-        localStorage.removeItem("authToken");
+        dispatch(removeUser())
         navigate("signin");
         return;
     };
+
+    const [searchParams] = useSearchParams();
+    const [search, setSearch] = useState(()=>{
+        const firstSearch = searchParams.get('search');
+
+        return firstSearch ? firstSearch : "";
+    });
+    
+    const dispatch = useDispatch();
+    const debounceValue = useDebounce(search, 1000);
+
+
+    function handleChange(event){
+        let searchValue = event.target.value;
+        setSearch(searchValue);
+
+        if (searchValue) {
+            return navigate({
+                pathname: "products",
+                search: `?search=${searchValue}`
+            })
+        }
+        
+        return navigate({
+            pathname: "products",
+            
+        })
+    };
+
+    useEffect(()=>{
+        dispatch(changeSearch(debounceValue))
+    },[dispatch, debounceValue])
 
     return (
         <div className={style.upContainer}>
@@ -19,7 +59,7 @@ function Header () {
                     <h3>хрючево</h3>
                 </div>
                 <div className="stringSearch">
-                    <input className={style.placeSearch}></input>
+                    <input value={search} onChange={handleChange} className={style.placeSearch }></input>
                 </div>
                 <div className={style.buttonContainer}>
                     
@@ -27,8 +67,8 @@ function Header () {
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
                         <div>
-                            <button onClick={()=>navigate("signin")}>signIn</button>
-                            <button onClick={()=>signOut()}>signOut</button>
+                            {!authToken && <button className={style.buttonIn} onClick={()=>navigate("signin")}>signIn</button>}
+                            {authToken && <button className={style.buttonOut} onClick={()=>signOut()}>signOut</button>}
                         </div>
                     </nav>
                 </div>

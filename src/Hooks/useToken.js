@@ -1,30 +1,31 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function useToken() {
-
+    const {authToken} = useSelector(state=>state.user)
     const getToken = () => {
-        const token = localStorage.getItem("authToken");
+        const token = authToken;
         
         return token;
     };
     
 
-    const [token, setToken] = useState(getToken());
+    const [token] = useState(getToken());
 
-    const saveToken = (ourToken) => {
+    // const saveToken = (ourToken) => {
         
-        setToken(token)
+    //     setToken(token)
 
-        return localStorage.setItem("authToken", ourToken);
-    }
+    //     return localStorage.setItem("authToken", ourToken);
+    // }
 
-    const deleteToken = () => {
-        setToken(undefined);
+    // const deleteToken = () => {
+    //     setToken(undefined);
 
-        return localStorage.removeItem("authToken");
-    }
+    //     return localStorage.removeItem("authToken");
+    // }
 
-    return {token, saveToken, deleteToken};
+    return {token};
 };
 
 export {useToken};

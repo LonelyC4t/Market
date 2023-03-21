@@ -12,6 +12,9 @@ import {FormsUp} from "./Components/Pages/Form/FormReg"
 import { UserPage } from './Components/Pages/UserPage/UserPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PrivateRouter } from './Components/privateRouter/privatRouter';
+import { store } from './redux/store/store';
+import { Provider } from 'react-redux';
+
 
 const queryClient = new QueryClient();
 
@@ -43,9 +46,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} /> 
-    </QueryClientProvider>
+    <Provider store = {store}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} /> 
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
 

@@ -51,6 +51,17 @@ class Api {
             }
         })
     };
+    getSearchProduct(query, token){
+
+        return fetch(`https://api.react-learning.ru/products/search?query=${query}`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json",
+                "Authorization": "Bearer " + token,
+            }
+        })
+    }
 };
 const api = new Api("9-gr");
 

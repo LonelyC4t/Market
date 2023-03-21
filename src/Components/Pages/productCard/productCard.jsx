@@ -1,4 +1,4 @@
-import style from "../../../style.module.css";
+import style from "../ProductPage/style.module.css";
 function ProductCard({item}) {
     return (
         <div className={style.productItem}>
