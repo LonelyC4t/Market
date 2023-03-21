@@ -1,0 +1,45 @@
+.formPlace {
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 25px;
+  }
+  .inputModal {
+    width: 500px;
+    margin-bottom: 15px;
+    height: 25px;
+    border-radius: 30px;
+    border: 0.1px solid black;
+    padding: 10px;
+    background-color: rgb(208, 205, 205);
+    border: none;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .buttonModal{
+    border-radius: 15px;
+    border: none;
+    background-color: aqua;
+    padding: 15px;
+    margin: 5px;
+    
+  }
+  .buttonModal:hover{
+    box-shadow: 1px 1px 2px 2px inset;
+  }
+  
+  .buttonModalReg {
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(196, 62, 241);
+    padding: 15px;
+    margin: 5px;
+  }
+  .buttonModalReg:hover{
+    box-shadow: 1px 1px 2px 2px inset;
+  }
