@@ -51,7 +51,7 @@ function ProductPage(){
                 return <div key = {index}>
                     <ProductCard item = {item} />
                 </div>
-            }) : <h3>По вашему запросу ничего не найдено</h3>
+            }) : <h3>По вашему запросу {search} ничего не найдено</h3>
         }
         </div>
     )

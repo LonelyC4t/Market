@@ -14,13 +14,17 @@ export const getInitialState = () => {
     if (lcStore) {
         return JSON.parse(lcStore)
     }
-    return {user: initialState.user} 
+    return {
+        user: initialState.user,
+        cart: initialState.cart
+    } 
 };
 
 export const initialState = {
     filter: {
         search: getSearchParams()
     },
+
     user: {
         token: "",
         name: "",
@@ -30,6 +34,8 @@ export const initialState = {
         email: "",
         group: "",
         __v: 0
-    }
+    },
+
+    cart: []
 };
 

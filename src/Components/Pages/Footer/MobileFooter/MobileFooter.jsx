@@ -1,6 +1,6 @@
 
 import logoImg from "../../../../Image/logo.png";
-import footer from "./Footer.module.css";
+import footer from "./footer.module.css";
 
 function MobileFooter () {
     return (

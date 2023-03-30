@@ -21,7 +21,7 @@ function FormsIn(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const {mutateAsync, isError, error} = useMutation({
+    const {mutateAsync, error} = useMutation({
         mutationFn: async (values) => {
             const responce = await api.authorization(values);
             let data = await responce.json();
@@ -39,7 +39,7 @@ function FormsIn(){
         }
     });
 
-    if(isError) return <p className={style.errMsg}>Что-то пошло не так</p>
+    
     
     async function handleSubmit(values){
         await mutateAsync(values);

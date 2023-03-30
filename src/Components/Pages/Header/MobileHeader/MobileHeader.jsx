@@ -10,6 +10,7 @@ import style from "./header.module.css";
 function MobileHeader () {
     const navigate = useNavigate();
     const {authToken} = useSelector(state => state.user);
+    const cart = useSelector(state => state.cart)
     const dispatch = useDispatch();
     
     function signOut() {
@@ -58,6 +59,7 @@ function MobileHeader () {
                 <div className={style.buttonContainer}>
                 <nav className={style.buttonContainer}>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"cart"}>Сart {authToken ? <p className={style.cartNumber}>{cart.length}</p>  : null}</NavLink>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
                         
                         <div>

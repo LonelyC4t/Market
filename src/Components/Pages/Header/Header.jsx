@@ -11,6 +11,7 @@ import { removeUser } from "../../../redux/slice/userSlice";
 function Header () {
     const navigate = useNavigate();
     const {authToken} = useSelector(state => state.user);
+    const cart = useSelector(state => state.cart);
     
 
     function signOut() {
@@ -56,7 +57,7 @@ function Header () {
             <div className={style.item}>
                 <div className={style.itemImage}>
                     <img className={style.logoItem} alt="Котопёс" src={logoImg}></img>
-                    <h3>хрючево</h3>
+                    <h3>Хрючево</h3>
                 </div>
                 <div className="stringSearch">
                     <input value={search} onChange={handleChange} className={style.placeSearch }></input>
@@ -65,6 +66,7 @@ function Header () {
                     
                     <nav className={style.buttonContainer}>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"cart"}>Сart {authToken ? <p className={style.cartNumber}>{cart.length}</p>  : null}</NavLink>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
                         <div>
                             {!authToken && <button className={style.buttonIn} onClick={()=>navigate("signin")}>signIn</button>}
