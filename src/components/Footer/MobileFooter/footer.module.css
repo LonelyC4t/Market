@@ -1,0 +1,44 @@
+
+  .itemImage{
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+  }
+  .logoItem{
+    width: 150px;
+    height: 100px;
+    margin: 15px;
+  }
+ 
+  .footerContainer {
+    background: rgb(221,241,71);
+    background: linear-gradient(140deg, rgba(221,241,71,1) 49%, rgba(44,255,0,1) 95%);
+    width: 100%;
+    height: 180px;
+    position: fixed;
+    bottom: 0;
+  }
+  .footerItem{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .cartNumber {
+    position: absolute;
+    width:15px ;
+    height:15px ;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: red;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    top: -20px;
+    right: -10px;
+  }
+  
