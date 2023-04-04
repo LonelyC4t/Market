@@ -1,24 +1,23 @@
-import { Header } from './Components/Pages/Header/Header';
-import { Footer } from './Components/Pages/Footer/Footer';
+import { Header } from './components/header/Header';
+import { Footer } from './components/Footer/Footer';
 import {Outlet, useNavigate} from 'react-router-dom';
-import { useWindowWidth } from './Hooks/useWindowWidth';
-import { MobileHeader } from './Components/Pages/Header/MobileHeader/MobileHeader';
-import { MobileFooter } from './Components/Pages/Footer/MobileFooter/MobileFooter';
+import { useWindowWidth } from './hooks/useWindowWidth';
+import { MobileHeader } from './components/header/MobileHeader/MobileHeader';
+import { MobileFooter } from './components/Footer/MobileFooter/MobileFooter';
 import style from "./style.module.css";
-import { useToken } from './Hooks/useToken';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 
 function App() {
   const windowWidth = useWindowWidth();
   const navigate = useNavigate()
+  const {authToken} = useSelector(state => state.user);
  
-  const {token} = useToken();
-  
   useEffect(()=>{
-    if(token) navigate("products")
-  },[token])
+    if(authToken) navigate("/products")
+  },[authToken])
   
   return (
     <div className={style.App}>

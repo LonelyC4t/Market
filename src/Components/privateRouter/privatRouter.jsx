@@ -1,10 +1,12 @@
 import { Navigate } from "react-router-dom";
-import { useToken } from "../../Hooks/useToken";
+import { useSelector } from "react-redux";
 
 function PrivateRouter({ children }) {
-    const { token } = useToken();
     
-    return token ? children : <Navigate to={"/signin"}/>
+    const {authToken} = useSelector(state => state.user);
+    
+    return authToken ? children : <Navigate to={"/signin"}/>
+    
 };
 
 export {PrivateRouter};

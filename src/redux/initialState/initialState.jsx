@@ -16,7 +16,8 @@ export const getInitialState = () => {
     }
     return {
         user: initialState.user,
-        cart: initialState.cart
+        cart: initialState.cart,
+        filter: initialState.filter
     } 
 };
 
