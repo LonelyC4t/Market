@@ -1,47 +1,47 @@
-// import { useEffect } from "react";
-// import ReactDOM from "react-dom";
+import { useEffect } from "react";
+import ReactDOM from "react-dom";
 
 
-// export function ModalContent({children, closeModal}){
-//     useEffect(() => {
-//         const listner = (event) => {
-//             if (event.key === "Escape"){
-//                 closeModal()
-//             }
-//         }
+export function ModalContent({children, closeModal}){
+    useEffect(() => {
+        const listner = (event) => {
+            if (event.key === "Escape"){
+                closeModal()
+            }
+        }
     
-//         document.addEventListener("keydown", listner);
+        document.addEventListener("keydown", listner);
 
-//         return () => {
-//             document.removeEventListener("keydown", listner)
-//         }
-//     }, [closeModal])
+        return () => {
+            document.removeEventListener("keydown", listner)
+        }
+    }, [closeModal])
 
-//     return (
-//         <div>
-//             <button onClick={closeModal}>Close</button>
-//             {children}
-//         </div>
-//     )
-// }
+    return (
+        <div>
+            <button onClick={closeModal}> Close </button>
+            {children}
+        </div>
+    )
+}
 
-// export function Modal({closeModal, isOpen = false, children}){
+export function Modal({closeModal, isOpen = false, children}){
     
-//     if (isOpen === false) return null;
+    if (isOpen === false) return null;
 
-//     const handlClick = (event) => {
-//         if (event.target === event.currentTarget) {
-//             closeModal()
-//         }
-//     };
+    const handlClick = (event) => {
+        if (event.target === event.currentTarget) {
+            closeModal()
+        }
+    };
 
-//     return ReactDOM.createPortal(
-//     <div onClick={()=> handlClick} >
-//         <ModalContent closeModal = {closeModal}>
-//             {children}
-//         </ModalContent>
-//     </div>, 
-//     document.getElementById('modalRoot'))
+    return ReactDOM.createPortal(
+    <div onClick={()=> handlClick} >
+        <ModalContent closeModal = {closeModal}>
+            {children}
+        </ModalContent>
+    </div>, 
+    document.getElementById('modalRoot'))
     
-// }
+}
 

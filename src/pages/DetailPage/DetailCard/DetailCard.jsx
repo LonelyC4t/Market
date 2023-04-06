@@ -2,13 +2,41 @@ import { useDispatch } from "react-redux";
 import style from "./style.module.css"
 import { addItem } from "../../../redux/slice/cartSlice";
 import { addFavorite } from "../../../redux/slice/favoriteSlice";
+import { useState } from "react";
+import { Modal } from "../../../components/Modal/Modal";
 
 export const DetailCard = ({product}) => {
     const dispatch = useDispatch();
-    
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpenFavor, setModalOpenFavor] = useState(false);
+
+    const closeModal = () => {
+        setTimeout(() => {
+            setModalOpen(false)
+        }, 3000);
+    };
+    const closeModalFavor = () => {
+        setTimeout(() => {
+            setModalOpenFavor(false)
+        }, 3000);
+    };
+
+    const handleAddCart = () => {
+        dispatch(addItem(product._id));
+        setModalOpen(true);
+        closeModal();
+    };
+
+    const handleAddFavor = () => {
+        dispatch(addFavorite(product._id));
+        setModalOpenFavor(true);
+        closeModalFavor();
+    }
     
     return (
         <div className={style.container}>
+            <Modal  isOpen = {modalOpen} closeModal = {closeModal}> <div className={style.addModal}>Товар добавлен в корзину</div> </Modal>
+            <Modal  isOpen = {modalOpenFavor} closeModal = {closeModal}> <div className={style.addFavor}>Товар добавлен в избранное</div> </Modal>
             <h4>{product.name}</h4>
             <div className={style.descriptionWrapper}>
                 <div className={style.imageWrapper}>
@@ -34,9 +62,9 @@ export const DetailCard = ({product}) => {
                     </div>
                     <div className={style.wrapperButton}>
                         
-                        <div className={style.cartButton} onClick={()=>dispatch(addItem(product._id))}> В корзину </div>
+                        <div className={style.cartButton} onClick={() => handleAddCart()}> В корзину </div>
 
-                        <div className={style.cartButton} onClick={()=>dispatch(addFavorite(product._id))}> В избранное </div>
+                        <div className={style.cartButton} onClick={() => handleAddFavor()}> В избранное </div>
 
                     </div>
                 </div>

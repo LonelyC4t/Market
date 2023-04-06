@@ -66,7 +66,7 @@ function Header () {
                     
                     <nav className={style.buttonContainer}>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"products"}>Product</NavLink>
-                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"cart"}>Сart {authToken ? <p className={style.cartNumber}>{cart.length}</p>  : null}</NavLink>
+                        <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"cart"}>Сart {cart.length > 0 ? <p className={style.cartNumber}>{cart.length} </p> : null}</NavLink>
                         <NavLink className={({isActive}) => isActive ? style.headerButtonActive : style.headerButton} to={"me"}>User</NavLink>
                         <div>
                             {!authToken && <button className={style.buttonIn} onClick={()=>navigate("signin")}>signIn</button>}

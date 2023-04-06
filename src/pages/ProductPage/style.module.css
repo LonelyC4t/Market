@@ -129,3 +129,19 @@
   font-weight: bolder;
   font-family: sans-serif;
 }
+.addModal{
+  position: fixed;
+  border-radius: 25px;
+  border-top-right-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 70px;
+  right: 220px;
+  width: 250px;
+  height: 55px;
+  background-color: rgb(212, 41, 61);
+  z-index: 5;
+  color: white;
+  
+}

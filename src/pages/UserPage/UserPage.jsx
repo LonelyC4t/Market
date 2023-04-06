@@ -1,17 +1,17 @@
-// import { useState } from "react";
+import { useState } from "react";
 import {api} from "../../api/api";
-// import { Modal } from "../../components/Modal/Modal";
+import { Modal } from "../../components/Modal/Modal";
 import { FavoriteBox } from "./FavoriteBox";
 import style from "./style.module.css";
 import {useQuery} from '@tanstack/react-query';
 import { useSelector } from "react-redux";
-// import { ProductForm } from "../../components/ProductForm";
+import { ProductForm } from "../../components/ProductForm";
 
 function UserPage(){
     
     const favorite = useSelector(state => state.favorite)
     const {authToken} = useSelector(state => state.user);
-    // const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const {data: aboutMe, isError, error} = useQuery({
 
@@ -31,7 +31,7 @@ function UserPage(){
 
     if(isError) return <p className={style.errMsg}>Что-то пошло не так</p>;
 
-    // const closeModal = () => setModalOpen(false)
+    const closeModal = () => setModalOpen(false)
 
     return (
         <div className={style.userContainrt}>
@@ -55,8 +55,8 @@ function UserPage(){
                 <FavoriteBox />
             </div> : null}
 
-            {/* <div onClick={() => setModalOpen(true)}>Добавить своё</div>
-            <Modal isOpen = {modalOpen} closeModal = {closeModal}> <ProductForm/> </Modal> */}
+            <div onClick={() => setModalOpen(true)}>Добавить своё</div>
+            <Modal isOpen = {modalOpen} closeModal = {closeModal}> <ProductForm/> </Modal>
         </div>
     )
 };

@@ -145,6 +145,37 @@
 .rate {
     margin-right: 15px;
 }
+.addModal{
+    position: fixed;
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 70px;
+    right: 220px;
+    width: 250px;
+    height: 55px;
+    background-color: rgb(212, 41, 61);
+    z-index: 5;
+    color: white;
+    
+}
+.addFavor{
+    position: fixed;
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 70px;
+    right: 180px;
+    width: 250px;
+    height: 55px;
+    background-color: rgb(255, 205, 4);
+    z-index: 5;
+    color: rgb(4, 4, 4); 
+}
 @media(max-width:1030px) {
     .descriptionWrapper{
         display: flex;

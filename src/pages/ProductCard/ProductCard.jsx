@@ -2,18 +2,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slice/cartSlice";
 import style from "../ProductPage/style.module.css";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "../../components/Modal/Modal";
+import { useState } from "react";
 
 function ProductCard({item}) {
     const {count} = useSelector(state => state.cart);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const closeModal = () => {
+        setTimeout(()=>{
+            setModalOpen(false)
+        },3000)
+    };
+
     const navigate = useNavigate();
-    
     const dispatch = useDispatch();
 
     const handleAddToCart = (event) => {
         event.stopPropagation();
-        dispatch(addItem(item._id))
-    }
-
+        dispatch(addItem(item._id));
+        setModalOpen(true)
+        closeModal()
+    };
+    
+    console.log(modalOpen);
     const WithLimit = ()  => {
         
         if (item.stock >=10)
@@ -42,6 +54,7 @@ function ProductCard({item}) {
             
             { WithLimit()}
             <span>{count}</span>
+            <Modal isOpen = {modalOpen} > <div className={style.addModal}>Товар добавлен в корзину</div> </Modal>
             
         </div>
     )
