@@ -28,6 +28,7 @@ function ProductCard({item}) {
     return (
         <div  onClick={() => navigate(item._id)} className={style.productItem}>
             <img alt = "Вообще тут должна быть картинка" className={style.imageItem} src={item.pictures}></img>
+            {item.discount ? <p className={style.sale}>Sale</p> : null}
             <span title={item.name} className={style.nameItem}>{item.name}</span>
             <div className={style.priceContainer}>
 

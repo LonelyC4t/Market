@@ -45,7 +45,6 @@ function Header () {
         
         return navigate({
             pathname: "products",
-            
         })
     };
 
@@ -56,7 +55,7 @@ function Header () {
     return (
         <div className={style.upContainer}>
             <div className={style.item}>
-                <div className={style.itemImage}>
+                <div onClick={()=>navigate("products")} className={style.itemImage}>
                     <img className={style.logoItem} alt="Котопёс" src={logoImg}></img>
                     <h3>Хрючево</h3>
                 </div>

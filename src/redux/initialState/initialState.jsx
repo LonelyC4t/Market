@@ -17,7 +17,8 @@ export const getInitialState = () => {
     return {
         user: initialState.user,
         cart: initialState.cart,
-        filter: initialState.filter
+        filter: initialState.filter,
+        favorite: initialState.favorite
     } 
 };
 
@@ -37,6 +38,9 @@ export const initialState = {
         __v: 0
     },
 
-    cart: []
+    cart: [],
+    
+    favorite: []
+
 };
 

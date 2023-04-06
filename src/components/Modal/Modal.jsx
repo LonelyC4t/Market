@@ -1,26 +1,47 @@
+// import { useEffect } from "react";
+// import ReactDOM from "react-dom";
 
-import ReactDOM from "react-dom";
 
-function ModalContent({}){
-    return (
-        <div>
-            <button>close</button>
-        </div>
-    )
-}
-
-function Modal({isOpen = false, children}){
+// export function ModalContent({children, closeModal}){
+//     useEffect(() => {
+//         const listner = (event) => {
+//             if (event.key === "Escape"){
+//                 closeModal()
+//             }
+//         }
     
-    if (isOpen = false) return null;
+//         document.addEventListener("keydown", listner);
 
-    return ReactDOM.createPortal(
-    <div>
-        <ModalContent>
-            {children}
-        </ModalContent>
-    </div>, 
-    document.getElementById('modalRoot'))
+//         return () => {
+//             document.removeEventListener("keydown", listner)
+//         }
+//     }, [closeModal])
+
+//     return (
+//         <div>
+//             <button onClick={closeModal}>Close</button>
+//             {children}
+//         </div>
+//     )
+// }
+
+// export function Modal({closeModal, isOpen = false, children}){
     
-}
+//     if (isOpen === false) return null;
 
-export {Modal};
+//     const handlClick = (event) => {
+//         if (event.target === event.currentTarget) {
+//             closeModal()
+//         }
+//     };
+
+//     return ReactDOM.createPortal(
+//     <div onClick={()=> handlClick} >
+//         <ModalContent closeModal = {closeModal}>
+//             {children}
+//         </ModalContent>
+//     </div>, 
+//     document.getElementById('modalRoot'))
+    
+// }
+

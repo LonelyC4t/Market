@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import style from "./style.module.css";
 import {api} from "../../api/api";
 import {useMutation} from '@tanstack/react-query';
-
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slice/userSlice';

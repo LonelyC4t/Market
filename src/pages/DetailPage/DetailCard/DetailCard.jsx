@@ -1,17 +1,19 @@
 import { useDispatch } from "react-redux";
 import style from "./style.module.css"
 import { addItem } from "../../../redux/slice/cartSlice";
+import { addFavorite } from "../../../redux/slice/favoriteSlice";
 
 export const DetailCard = ({product}) => {
     const dispatch = useDispatch();
-
-    console.log(product);
+    
+    
     return (
         <div className={style.container}>
             <h4>{product.name}</h4>
             <div className={style.descriptionWrapper}>
                 <div className={style.imageWrapper}>
                     <img className={style.itemImg} src={product.pictures} alt={`${product.name}.jpg`} />
+                    
                 </div>
                 <div className={style.description}>
                     <div className={style.currentDescription}>
@@ -23,12 +25,18 @@ export const DetailCard = ({product}) => {
                     <div className={style.weight}>
                         Масса нетто: {product.wight}
                     </div>
-                    <div className={style.price}>
+                    <div className={style.price}>   
                         {product.discount ? product.price - product.price * (product.discount / 100)  : product.price }₽
+                    </div>
+                    <div className={style.likesWrapper}> пользователей оценило: 
+                        <p className={style.like}>❤</p>
+                        <p className={style.likeNum}>{product.likes.length}</p>
                     </div>
                     <div className={style.wrapperButton}>
                         
                         <div className={style.cartButton} onClick={()=>dispatch(addItem(product._id))}> В корзину </div>
+
+                        <div className={style.cartButton} onClick={()=>dispatch(addFavorite(product._id))}> В избранное </div>
 
                     </div>
                 </div>
@@ -36,6 +44,7 @@ export const DetailCard = ({product}) => {
             <div >
                 {product.reviews.map((item, index)=>{
                     return <div key = {index} className={style.feedbackWrapper}>
+                        
                         <div className={style.feedback}>
                             <div className={style.avatar}>АВА</div>
                             <p className={style.message}>{item.text}</p>

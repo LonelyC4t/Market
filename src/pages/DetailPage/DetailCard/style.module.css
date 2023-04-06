@@ -18,7 +18,10 @@
 .itemImg{
     width: 500px;
     height: 500px;
+    object-fit: contain;
 }
+
+
 .descriptionWrapper{
     display: flex;
     justify-content: space-between;
@@ -26,7 +29,7 @@
     padding: 20px;
 }
 .description{
-    border: 1px solid black;
+    box-shadow: 1px 1px 15px 2px gray;
     background: rgb(44,255,0);
     background: linear-gradient(45deg, rgba(44,255,0,1) 25%, rgba(221,241,71,1) 75%);
     border-radius: 20px;
@@ -70,7 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 150px;
     height: 30px;
     border-radius: 10%;
     padding: 5px;
@@ -78,6 +81,7 @@
     background-color:  rgba(221,241,71);
     border: 1px solid black;
     transition: 0.3s;
+    margin-left: 20px;
 }
 .cartButton:hover{
     transition: 0.3s;
@@ -118,6 +122,24 @@
     display: flex;
     justify-content: center;
     cursor: default;
+}
+.likesWrapper{
+    display: flex;
+    justify-content: flex-start;
+    cursor: default;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+.like{
+    cursor: default;
+    margin: 0px 0px 10px 10px;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+.likeNum{
+    font-size: 15px;
 }
 
 .rate {

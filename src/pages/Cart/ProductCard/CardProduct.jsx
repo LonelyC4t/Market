@@ -9,16 +9,22 @@ export const CardProduct = ({product:{name, price, discount, _id, stock, picture
     const navigate = useNavigate();
     
     
-    const removeItemm = (event) => {
+    const removeProduct = (event) => {
         console.log(event);
         event.stopPropagation();
         dispatch(removeItem(_id))
     };
-    const handleCount  = (event) => {
+    const handleIncrementCount  = (event) => {
         console.log(event);
         event.stopPropagation();
         dispatch(incrementCount(_id))
     };
+    const handleDecrementCount  = (event) => {
+        console.log(event);
+        event.stopPropagation();
+        dispatch(deсrementCount(_id))
+    };
+    
     
     return (
         <>
@@ -37,13 +43,13 @@ export const CardProduct = ({product:{name, price, discount, _id, stock, picture
                         
                     </div>
                     <div className={style.countContainer}>
-                        <button onClick={(event)=>handleCount(event)} className={style.handleCount}> - </button>
+                        <button onClick={(event)=>handleDecrementCount(event)} className={style.handleCount}> - </button>
                         <div className={style.count}> {count} </div>
-                        <button disabled={count === stock  }  onClick={()=>dispatch(incrementCount(_id))} className={style.handleCount}> + </button>
+                        <button disabled={count === stock  }  onClick={(event)=>handleIncrementCount(event)} className={style.handleCount}> + </button>
                     </div>
                 </div>
-                <input onChange={(event) => dispatch(changeChek( {_id, isCheked: event.target.checked} ))} className={style.chekBox} checked = {isCheked} type="checkbox"></input>
-                <button className={style.delButton} onClick={(event)=>removeItemm(event)}>DEL</button>
+                <input onClick={(event)=>event.stopPropagation()} onChange={(event) => dispatch(changeChek( {_id, isCheked: event.target.checked} ))} className={style.chekBox} checked = {isCheked} type="checkbox"></input>
+                <button className={style.delButton} onClick={(event)=>removeProduct(event)}>DEL</button>
             </div>
             
         </div>

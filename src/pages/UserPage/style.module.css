@@ -1,9 +1,11 @@
 .userContainrt{
   position: relative;
-  top: 150px;
+  margin-top: 150px;
+  
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .userItem {
   display: flex;
@@ -20,4 +22,53 @@
   border-radius: 25px;
   padding: 15px;
   font-size: 20px;
+}
+.favorContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.favorWrapper{
+  background-color: rgb(210, 213, 212);
+  display: flex;
+  padding: 20px;
+  margin-top: 0px;
+  flex-wrap: wrap;
+  min-width: 600px;
+  max-width: 1000px;
+  box-shadow: 1px 1px 2px 2px gray;
+}
+.FavorImg{
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  transition: 1s;
+  z-index: 1;
+ 
+}
+.FavorImg:hover {
+  scale: 1.5;
+  transition: 1s;
+  z-index: 2;
+  transform: translateY(-30px);
+  box-shadow: 1px 1px 5px 2px gray;
+}
+.favorTitle{
+  margin-top: 30px;
+}
+.favorDel {
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  font-size: 10px;
+  
+}
+.favorDel:hover {
+  scale: 1.1;
+  color: red;
+  transform: rotate(45deg);
+  
 }
