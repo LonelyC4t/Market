@@ -24,7 +24,9 @@ export const getInitialState = () => {
 
 export const initialState = {
     filter: {
-        search: getSearchParams()
+        search: getSearchParams(),
+        sorting: "",
+
     },
 
     user: {

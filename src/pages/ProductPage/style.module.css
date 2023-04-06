@@ -143,5 +143,9 @@
   background-color: rgb(212, 41, 61);
   z-index: 5;
   color: white;
-  
+}
+.selectSort{
+  position: fixed;
+  top: 120px;
+  left: 20px;
 }

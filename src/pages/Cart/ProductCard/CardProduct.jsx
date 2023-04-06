@@ -10,17 +10,14 @@ export const CardProduct = ({product:{name, price, discount, _id, stock, picture
     
     
     const removeProduct = (event) => {
-        console.log(event);
         event.stopPropagation();
         dispatch(removeItem(_id))
     };
     const handleIncrementCount  = (event) => {
-        console.log(event);
         event.stopPropagation();
         dispatch(incrementCount(_id))
     };
     const handleDecrementCount  = (event) => {
-        console.log(event);
         event.stopPropagation();
         dispatch(deсrementCount(_id))
     };

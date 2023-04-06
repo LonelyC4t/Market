@@ -25,7 +25,6 @@ function ProductCard({item}) {
         closeModal()
     };
     
-    console.log(modalOpen);
     const WithLimit = ()  => {
         
         if (item.stock >=10)

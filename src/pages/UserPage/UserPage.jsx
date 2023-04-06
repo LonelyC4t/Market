@@ -54,9 +54,6 @@ function UserPage(){
             <h3 className={style.favorTitle}>Ваши избранные товары</h3>
                 <FavoriteBox />
             </div> : null}
-
-            <div onClick={() => setModalOpen(true)}>Добавить своё</div>
-            <Modal isOpen = {modalOpen} closeModal = {closeModal}> <ProductForm/> </Modal>
         </div>
     )
 };
