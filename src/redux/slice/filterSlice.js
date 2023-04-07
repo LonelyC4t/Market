@@ -7,6 +7,9 @@ export const filterSlice = createSlice({
     reducers: {
         changeSearch(state, action) {
             state.search = action.payload;
+        },
+        changeSorting(state, action) {
+            state.sorting = action.payload
         }
     }
 
@@ -17,5 +20,5 @@ export  function getFilterSelector(state) {
     return  state.filter
 };  
 
-export const {changeSearch} = filterSlice.actions;
+export const {changeSearch, changeSorting} = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
