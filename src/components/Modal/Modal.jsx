@@ -19,7 +19,6 @@ export function ModalContent({children, closeModal}){
 
     return (
         <div>
-            <button onClick={closeModal}> Close </button>
             {children}
         </div>
     )

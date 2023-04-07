@@ -34,6 +34,7 @@
     background: linear-gradient(45deg, rgba(44,255,0,1) 25%, rgba(221,241,71,1) 75%);
     border-radius: 20px;
     min-width: 500px;
+    cursor: default;
 }
 .currentDescription{
     line-height: 20px;

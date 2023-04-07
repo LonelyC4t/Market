@@ -145,7 +145,15 @@
   color: white;
 }
 .selectSort{
+  text-align: center;
   position: fixed;
-  top: 120px;
-  left: 20px;
+  top: 82px;
+  padding: 3px;
+  left: 45%;
+  z-index: 5;
+  border: none;
+  appearance: none;
+  background-color:  rgba(221,241,71);
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px;
 }

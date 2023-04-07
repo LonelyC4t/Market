@@ -50,7 +50,7 @@ export const Cart = () => {
             </div>
 
             {cart.length === 0 ? <div className={style.emptyCart}> 
-                <p onClick={()=>navigate("/products")} className={style.emptyCartText}> В коорзине пока пусто </p>
+                <p onClick={()=>navigate("/products")} className={style.emptyCartText}> В корзине пока пусто </p>
                 <img className={style.emptyCartImg} alt="В корзине пусто" src={emptyCart}></img> 
                 <p onClick={()=>navigate("/products")} className={style.emptyCartText}> Срочно исправляем ситуацию.</p>
             </div> : null}
