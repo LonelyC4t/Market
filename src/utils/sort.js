@@ -1,4 +1,0 @@
-export const PRICE_SORT_UP = "PRICE_SORT_UP";
-export const PRICE_SORT_DOWN = "PRICE_SORT_DOWN";
-export const DISCOUNT_SORT_UP = "DISCOUNT_SORT_UP";
-export const DISCOUNT_SORT_DOWN = "DISCOUNT_SORT_DOWN";
