@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  justify-content: center;
+}
+.firstpage {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+}
+.firstpagebutton {
+  margin-left: 20px;
+  background-color: aqua;
+  border: none;
+  border-radius: 25px;
+  padding: 20px;
+}
